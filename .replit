@@ -1,0 +1,39 @@
+entrypoint = "main.py"
+modules = ["python-3.10:v18-20230807-322e88b"]
+
+# Stops the packager from installing packages when running the Repl
+disableInstallBeforeRun = true
+# Stops the packager from guessing and auto-installing packages, but it still runs to install packages when running the Repl
+disableGuessImports = true
+
+hidden = [".pythonlibs"]
+
+[nix]
+channel = "stable-23_05"
+
+[unitTest]
+language = "python3"
+
+[deployment]
+run = ["python3", "main.py"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 34367
+externalPort = 3000
+
+[[ports]]
+localPort = 37437
+externalPort = 3001
+
+[[ports]]
+localPort = 40375
+externalPort = 80
+
+[[ports]]
+localPort = 45457
+externalPort = 3003
+
+[[ports]]
+localPort = 56181
+externalPort = 3002
